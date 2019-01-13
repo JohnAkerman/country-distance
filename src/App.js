@@ -3,7 +3,7 @@ import './App.css';
 
 import { distanceBetween, randomBetween } from './lib/helpers'
 
-import { Capital, Scoreboard } from './components'
+import { Capital, Scoreboard, MainMenu } from './components'
 
 import capitals from './lib/capitalData.json'
 
@@ -133,6 +133,7 @@ class App extends Component {
   render() {
     return (
         <div className="container">
+            <MainMenu menu='splash' />
             <Scoreboard total={this.state.totalAnswers} correct={this.state.correctAnswers} wrong={this.state.wrongAnswers} />
             <h2>Location</h2>
             <Capital location={this.state.start.location} data={this.state.start.data} type="question" />
