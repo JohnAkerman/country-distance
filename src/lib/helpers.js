@@ -15,7 +15,7 @@ export const distanceBetween = (a, b) => {
        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
        (1 - Math.cos(dLon))/2;
 
-    return R * 2 * Math.asin(Math.sqrt(d));
+    return Math.floor(R * 2 * Math.asin(Math.sqrt(d)))
 }
 
 export const randomBetween = (min, max) => {

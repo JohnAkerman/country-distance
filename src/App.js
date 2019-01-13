@@ -97,10 +97,8 @@ class App extends Component {
 
     checkAnswer(guess) {
         let correctAnswer = null
-        let distA = distanceBetween(this.state.start.location, this.state.answerA.location)
-        let distB = distanceBetween(this.state.start.location, this.state.answerB.location)
 
-        if (distA < distB) correctAnswer = this.state.answerA
+        if (this.state.answerA.distance < this.state.answerB.distance) correctAnswer = this.state.answerA
         else correctAnswer = this.state.answerB
 
         if (correctAnswer.location === guess.state.location) { // Correct
