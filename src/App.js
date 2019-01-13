@@ -16,30 +16,24 @@ class App extends Component {
             correctAnswers: 0,
             wrongAnswers: 0,
             totalAnswers: 0,
-            start: {
-                location: this.getRandomCapital(),
-                data: {
-                    selected: false,
-                    correct: null,
-                    distance: 0
-                }
-            },
-            answerA: {
-                location: this.getRandomCapital(),
-                data: {
-                    selected: false,
-                    correct: null,
-                    distance: 0
-                }
-            },
-            answerB: {
-                location: this.getRandomCapital(),
-                data: {
-                    selected: false,
-                    correct: null,
-                    distance: 0
-                }
-            }
+            // start: {
+            //     location: this.getRandomCapital(),
+            //     selected: false,
+            //     correct: null,
+            //     distance: 0
+            // },
+            // answerA: {
+            //     location: this.getRandomCapital(),
+            //     selected: false,
+            //     correct: null,
+            //     distance: 0
+            // },
+            // answerB: {
+            //     location: this.getRandomCapital(),
+            //     selected: false,
+            //     correct: null,
+            //     distance: 0
+            // }
         }
     }
 
@@ -53,32 +47,32 @@ class App extends Component {
 
     nextGame = () => {
         // Get new center location, and two random answers
+        let locationStart = this.getRandomCapital();
+        let locationA = this.getRandomCapital();
+        let locationB = this.getRandomCapital();
+
         this.setState({
             start: {
-                location: this.getRandomCapital(),
-                data: {
-                    selected: false,
-                    correct: null,
-                    distance: 0
-                },
+                location: locationStart,
+                selected: false,
+                correct: null,
+                distance: 0,
                 classes: 'capital'
             },
             answerA: {
-                location: this.getRandomCapital(),
-                data: {
-                    selected: false,
-                    correct: null,
-                    distance: 0
-                },
+                location: locationA,
+                selected: false,
+                correct: null,
+                distance: distanceBetween(locationStart, locationA),
+                showDistance: false,
                 classes: 'capital'
             },
             answerB: {
-                location: this.getRandomCapital(),
-                data: {
-                    selected: false,
-                    correct: null,
-                    distance: 0
-                },
+                location: locationB,
+                selected: false,
+                correct: null,
+                distance: distanceBetween(locationStart, locationB),
+                showDistance: false,
                 classes: 'capital'
             },
             providedAnswer: false
@@ -109,13 +103,8 @@ class App extends Component {
         if (distA < distB) correctAnswer = this.state.answerA
         else correctAnswer = this.state.answerB
 
-        let guessDist = distanceBetween(correctAnswer.location, guess.state.location)
-
         if (correctAnswer.location === guess.state.location) { // Correct
-            let guessData = guess.state.data
-            guessData.correct = true
-            guessData.distance = guessDist
-            guess.setState({ data: guessData})
+            guess.setState({ correct: true })
 
             this.setState(prevState => ({
                 correct: true,
@@ -123,10 +112,7 @@ class App extends Component {
                 correctAnswers: prevState.correctAnswers + 1
             }))
         } else {
-            let guessData = guess.state.data;
-            guessData.correct = false
-            guessData.distance = guessDist
-            guess.setState({ data: guessData})
+            guess.setState({ correct: false })
 
             this.setState(prevState => ({
                 correct: false,
@@ -134,20 +120,28 @@ class App extends Component {
                 wrongAnswers: prevState.wrongAnswers + 1
             }))
         }
+
+        let answerA = this.state.answerA
+        answerA.showDistance = true
+        this.setState({ answerA: answerA })
+
+        let answerB = this.state.answerB
+        answerB.showDistance = true
+        this.setState({ answerB: answerB })
     }
 
   render() {
     return (
         <div className="container">
             <Scoreboard total={this.state.totalAnswers} correct={this.state.correctAnswers} wrong={this.state.wrongAnswers} />
-            <h2>Centre</h2>
+            <h2>Location</h2>
             <Capital location={this.state.start.location} data={this.state.start.data} type="question" />
 
-            <h2>Answers</h2>
-            <Capital location={this.state.answerA.location} data={this.state.start.data} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-            <Capital location={this.state.answerB.location} data={this.state.start.data} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+            <h2>Which is closer?</h2>
+            <Capital location={this.state.answerA.location} showDistance={this.state.answerA.showDistance} distance={this.state.answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+            <Capital location={this.state.answerB.location} showDistance={this.state.answerB.showDistance} distance={this.state.answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
 
-            <button type="button" onClick={this.nextGame}>Next Game</button>
+            <button type="button" onClick={this.nextGame}>Next Round</button>
         </div>
     );
   }

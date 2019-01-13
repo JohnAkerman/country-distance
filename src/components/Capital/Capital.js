@@ -5,13 +5,12 @@ class Capital extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: {
-                selected: false,
-                correct: null,
-                distance: 0
-            },
+            selected: false,
+            correct: null,
+            distance: props.distance,
             location: props.location,
-            classes: 'capital'
+            classes: 'capital',
+            showDistance: false
         }
 
         this.returnGuessToApp = props.returnGuessToApp
@@ -37,25 +36,18 @@ class Capital extends Component {
         if (nextProps.location !== this.state.location) {
             this.setState({
                 location: nextProps.location,
-                data: {
-                    correct: null,
-                    distance: 0,
-                    selected: false
-                }
+                correct: null,
+                distance: 0,
+                selected: false
             });
         }
-        this.setState({
-            classes: this.getAnswerStatus()
-        })
     }
 
     onClick = () => {
         if (this.props.type === 'answer') {
-            let prevState = this.state.data;
-            prevState.selected = !prevState.selected
-            this.setState({
-                data: prevState
-            })
+            this.setState(prevState => ({
+                selected: !prevState.selected
+            }))
 
             this.returnGuessToApp(this)
 
@@ -69,14 +61,14 @@ class Capital extends Component {
     getAnswerStatus() {
         let className = 'capital'
 
-        if (this.state.data.correct === false) {
+        if (this.state.correct === false) {
             className += ' is-wrong'
         }
-        else if (this.state.data.correct === true) {
+        else if (this.state.correct === true) {
             className += ' is-correct'
         }
 
-        if (this.state.data.selected) {
+        if (this.state.selected) {
             className += ' is-selected'
         }
 
@@ -84,9 +76,9 @@ class Capital extends Component {
     }
 
     renderDistance() {
-        if (this.state.data.distance > 0) {
+        if (this.props.showDistance) {
             return (
-                <span className="capital__dist">{this.state.data.distance} km</span>
+                <span className="capital__dist">{this.props.distance} km</span>
             )
         }
     }
