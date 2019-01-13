@@ -86,7 +86,7 @@ class Capital extends Component {
     renderDistance() {
         if (this.state.data.distance > 0) {
             return (
-                <span class="capital__dist">{this.state.data.distance} km</span>
+                <span className="capital__dist">{this.state.data.distance} km</span>
             )
         }
     }
