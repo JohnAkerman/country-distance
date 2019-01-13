@@ -4,6 +4,8 @@ import './App.css';
 import { distanceBetween, randomBetween } from './lib/helpers'
 
 import Capital from './components/Capital/Capital'
+
+
 import capitals from './lib/capitalData.json'
 
 class App extends Component {
@@ -101,23 +103,19 @@ class App extends Component {
     }
 
     checkAnswer(guess) {
-
-        // Check real answer
-        let realAnswer = null
+        let correctAnswer = null
         let distA = distanceBetween(this.state.start.location, this.state.answerA.location)
         let distB = distanceBetween(this.state.start.location, this.state.answerB.location)
 
-        if (distA < distB) realAnswer = this.state.answerA
-        else realAnswer = this.state.answerB
+        if (distA < distB) correctAnswer = this.state.answerA
+        else correctAnswer = this.state.answerB
 
-        let guessDist = distanceBetween(realAnswer.location, guess.state.location)
-        console.log('Answer', realAnswer.location)
-        console.log('Guess', guess.state.location)
+        let guessDist = distanceBetween(correctAnswer.location, guess.state.location)
 
-        if (realAnswer.location === guess.state.location) { // Correct
-            let guessData = guess.state.data;
+        if (correctAnswer.location === guess.state.location) { // Correct
+            let guessData = guess.state.data
             guessData.correct = true
-            guessData.distance =guessDist
+            guessData.distance = guessDist
             guess.setState({ data: guessData})
 
             this.setState({

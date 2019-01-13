@@ -51,10 +51,10 @@ class Capital extends Component {
 
     onClick = () => {
         if (this.props.type === 'answer') {
-            let oldData = this.state.data;
-            oldData.selected = !oldData.selected
+            let prevState = this.state.data;
+            prevState.selected = !prevState.selected
             this.setState({
-                data: oldData,
+                data: prevState
             })
 
             this.returnGuessToApp(this)
