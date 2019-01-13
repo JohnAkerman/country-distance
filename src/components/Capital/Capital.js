@@ -2,33 +2,47 @@ import React, { Component } from 'react'
 import './Capital.css'
 
 class Capital extends Component {
-    constructor(props) {
+    constructor({props, returnGuessToApp }) {
         super(props)
 
         this.state = {
-            selected: false
+            selected: false,
+            correct: null
         }
+
+        this.returnGuessToApp = returnGuessToApp
     }
 
     onClick = () => {
         this.setState({
             selected: !this.state.selected
         })
+
+        this.returnGuessToApp(this)
     }
 
-    componentDidMount() {
-        console.log('Mounted')
+    getAnswerStatus() {
+        let className = 'capital'
+
+        if (this.state.correct === false) {
+            className += ' is-wrong'
+        }
+        else if (this.state.correct === true) {
+            className += ' is-correct'
+        }
+
+        if (this.state.selected) {
+            className += ' is-selected'
+        }
+
+        return className
     }
 
     render() {
-        let className = 'capital'
-        if (this.state.selected && this.props.question === false) className += ' selected'
-        else className += ' not-selected'
-
         return (
-            <div className={className} onClick={this.onClick}>
-                <h3 className="capital__title">{this.props.item.capital}</h3>
-                <span className="capital__country">{this.props.item.countryName}</span>
+            <div className={this.getAnswerStatus()} onClick={this.onClick}>
+                <h3 className="capital__title">{this.props.country.capital}</h3>
+                <span className="capital__country">{this.props.country.countryName}</span>
             </div>
         )
     }

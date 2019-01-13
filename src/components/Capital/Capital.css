@@ -5,7 +5,15 @@
     margin-bottom: 15px;
 }
 
-.capital.selected {
+.capital.is-selected {
+    background-color: orange;
+}
+
+.capital.is-wrong {
+    background-color: red;
+}
+
+.capital.is-correct {
     background-color: green;
 }
 
