@@ -1,0 +1,18 @@
+.capital {
+    background-color: #e2e2e2;
+    border-radius: 4px;
+    padding: 5px 8px;
+    margin-bottom: 15px;
+}
+
+.capital.selected {
+    background-color: green;
+}
+
+.capital__title {
+    margin: 0;
+}
+
+.capital__country {
+    display: inline-block;
+}
