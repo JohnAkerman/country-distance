@@ -18,41 +18,36 @@ class Capital extends Component {
     }
 
     componentWillMount() {
-        // this.setState({
-        //     location: this.props.location
-        // })
-        console.log('A')
+        // console.log('A')
     }
 
     componentDidMount() {
-        // this.setState({
-        //     location: this.props.location
-        // })
-
-        console.log('B')
+        // console.log('B')
     }
 
     componentWillUpdate() {
-        console.log('C')
-        // this.state.classes = this.getAnswerStatus()
-        // this.setState({classes: this.getAnswerStatus()})
+        // console.log('C')
     }
 
     componentDidUpdate() {
-
     }
 
     componentWillReceiveProps(nextProps) {
         // You don't have to do this check first, but it can help prevent an unneeded render
         if (nextProps.location !== this.state.location) {
-            this.setState({ location: nextProps.location });
+            this.setState({
+                location: nextProps.location,
+                data: {
+                    correct: null,
+                    distance: 0,
+                    selected: false
+                }
+            });
         }
-
         this.setState({
             classes: this.getAnswerStatus()
         })
     }
-
 
     onClick = () => {
         if (this.props.type === 'answer') {
@@ -64,10 +59,11 @@ class Capital extends Component {
 
             this.returnGuessToApp(this)
 
-            this.setState({
-                classes: this.getAnswerStatus()
-            })
         }
+
+        this.setState({
+            classes: this.getAnswerStatus()
+        })
     }
 
     getAnswerStatus() {
@@ -87,12 +83,19 @@ class Capital extends Component {
         return className
     }
 
+    renderDistance() {
+        if (this.state.data.distance > 0) {
+            return (
+                <span class="capital__dist">{this.state.data.distance} km</span>
+            )
+        }
+    }
+
     render() {
+        var classes = this.getAnswerStatus()
         return (
-            <div className={this.state.classes} onClick={this.onClick}>
-                <h3 className="capital__title">{this.props.location.capital}
-                {' ' + this.state.data.distance + 'km'}
-                </h3>
+                <div className={classes} onClick={this.onClick}>
+                <h3 className="capital__title">{this.props.location.capital} {this.renderDistance() }</h3>
                 <span className="capital__country">{this.props.location.countryName}</span>
             </div>
         )

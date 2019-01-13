@@ -79,7 +79,8 @@ class App extends Component {
                     distance: 0
                 },
                 classes: 'capital'
-            }
+            },
+            providedAnswer: false
         })
     }
 
@@ -93,7 +94,10 @@ class App extends Component {
     }
 
     updateAppState = guess => {
-        this.checkAnswer(guess)
+        if (!this.state.providedAnswer) {
+            this.setState({providedAnswer: true})
+            this.checkAnswer(guess)
+        }
     }
 
     checkAnswer(guess) {
