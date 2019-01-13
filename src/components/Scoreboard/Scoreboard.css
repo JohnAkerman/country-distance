@@ -1,0 +1,26 @@
+.scoreboard {
+    width: 100%;
+    text-align: center;
+    background-color: #dadada;
+    border-bottom: 2px solid black;
+    padding: 15px 0;
+}
+
+.scoreboard .figure {
+    font-size: 32px;
+    display: block;
+    margin: 0;
+}
+
+.scoreboard .score {
+    display: inline-block;
+    width: 50%;
+}
+
+.scoreboard .correct .figure {
+    color: green;
+}
+
+.scoreboard .wrong .figure {
+    color: red;
+}

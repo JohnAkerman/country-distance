@@ -3,8 +3,7 @@ import './App.css';
 
 import { distanceBetween, randomBetween } from './lib/helpers'
 
-import Capital from './components/Capital/Capital'
-
+import { Capital, Scoreboard } from './components'
 
 import capitals from './lib/capitalData.json'
 
@@ -118,25 +117,29 @@ class App extends Component {
             guessData.distance = guessDist
             guess.setState({ data: guessData})
 
-            this.setState({
+            this.setState(prevState => ({
                 correct: true,
-                totalAnswers: this.state.totalAnswers + 1,
-                correctAnswers: this.state.correctAnswers + 1
-            })
+                totalAnswers: prevState.totalAnswers + 1,
+                correctAnswers: prevState.correctAnswers + 1
+            }))
         } else {
             let guessData = guess.state.data;
             guessData.correct = false
             guessData.distance = guessDist
             guess.setState({ data: guessData})
 
-            this.setState({ correct: false, totalAnswers: this.state.totalAnswers + 1, wrongAnswers: this.state.wrongAnswers + 1})
+            this.setState(prevState => ({
+                correct: false,
+                totalAnswers: prevState.totalAnswers + 1,
+                wrongAnswers: prevState.wrongAnswers + 1
+            }))
         }
     }
 
   render() {
     return (
         <div className="container">
-            <div>Guesses: {this.state.totalAnswers} Correct: {this.state.correctAnswers} Wrong: {this.state.wrongAnswers}</div>
+            <Scoreboard total={this.state.totalAnswers} correct={this.state.correctAnswers} wrong={this.state.wrongAnswers} />
             <h2>Centre</h2>
             <Capital location={this.state.start.location} data={this.state.start.data} type="question" />
 
