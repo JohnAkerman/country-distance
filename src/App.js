@@ -37,7 +37,6 @@ class App extends Component {
                 selected: false,
                 correct: null,
                 distance: 0,
-                classes: 'capital'
             },
             answerA: {
                 location: locationA,
@@ -45,7 +44,6 @@ class App extends Component {
                 correct: null,
                 distance: distanceBetween(locationStart, locationA),
                 showDistance: false,
-                classes: 'capital'
             },
             answerB: {
                 location: locationB,
@@ -53,7 +51,6 @@ class App extends Component {
                 correct: null,
                 distance: distanceBetween(locationStart, locationB),
                 showDistance: false,
-                classes: 'capital'
             },
             providedAnswer: false
         })
@@ -92,8 +89,8 @@ class App extends Component {
                 correct: true,
                 totalAnswers: prevState.totalAnswers + 1,
                 correctAnswers: prevState.correctAnswers + 1,
-                answerA: answerA,
-                answerB: answerB
+                answerA,
+                answerB
             }))
         } else {
             guess.setState({ correct: false })
@@ -102,8 +99,8 @@ class App extends Component {
                 correct: false,
                 totalAnswers: prevState.totalAnswers + 1,
                 wrongAnswers: prevState.wrongAnswers + 1,
-                answerA: answerA,
-                answerB: answerB
+                answerA,
+                answerB
             }))
         }
     }
