@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 
+import capitals from './lib/capitalData.json'
 import { distanceBetween, randomBetween } from './lib/helpers'
 
 import { Capital, Scoreboard, MainMenu } from './components'
-
-import capitals from './lib/capitalData.json'
 
 class App extends Component {
     constructor() {
@@ -16,24 +14,6 @@ class App extends Component {
             correctAnswers: 0,
             wrongAnswers: 0,
             totalAnswers: 0,
-            // start: {
-            //     location: this.getRandomCapital(),
-            //     selected: false,
-            //     correct: null,
-            //     distance: 0
-            // },
-            // answerA: {
-            //     location: this.getRandomCapital(),
-            //     selected: false,
-            //     correct: null,
-            //     distance: 0
-            // },
-            // answerB: {
-            //     location: this.getRandomCapital(),
-            //     selected: false,
-            //     correct: null,
-            //     distance: 0
-            // }
         }
     }
 
@@ -46,7 +26,7 @@ class App extends Component {
     }
 
     nextGame = () => {
-        // Get new center location, and two random answers
+        // Get new center location, and two random locations
         let locationStart = this.getRandomCapital();
         let locationA = this.getRandomCapital();
         let locationB = this.getRandomCapital();
@@ -84,8 +64,7 @@ class App extends Component {
     }
 
     getSelectedAnswer(a, b) {
-        if (a.selected) return a
-        else if (b.selected) return b
+        return a.selected ? a : b
     }
 
     updateAppState = guess => {
@@ -98,8 +77,13 @@ class App extends Component {
     checkAnswer(guess) {
         let correctAnswer = null
 
-        if (this.state.answerA.distance < this.state.answerB.distance) correctAnswer = this.state.answerA
-        else correctAnswer = this.state.answerB
+        let { answerA, answerB } = this.state
+
+        if (answerA.distance < answerB.distance) correctAnswer = answerA
+        else correctAnswer = answerB
+
+        answerA.showDistance = true
+        answerB.showDistance = true
 
         if (correctAnswer.location === guess.state.location) { // Correct
             guess.setState({ correct: true })
@@ -107,7 +91,9 @@ class App extends Component {
             this.setState(prevState => ({
                 correct: true,
                 totalAnswers: prevState.totalAnswers + 1,
-                correctAnswers: prevState.correctAnswers + 1
+                correctAnswers: prevState.correctAnswers + 1,
+                answerA: answerA,
+                answerB: answerB
             }))
         } else {
             guess.setState({ correct: false })
@@ -115,35 +101,30 @@ class App extends Component {
             this.setState(prevState => ({
                 correct: false,
                 totalAnswers: prevState.totalAnswers + 1,
-                wrongAnswers: prevState.wrongAnswers + 1
+                wrongAnswers: prevState.wrongAnswers + 1,
+                answerA: answerA,
+                answerB: answerB
             }))
         }
-
-        let answerA = this.state.answerA
-        answerA.showDistance = true
-        this.setState({ answerA: answerA })
-
-        let answerB = this.state.answerB
-        answerB.showDistance = true
-        this.setState({ answerB: answerB })
     }
 
-  render() {
-    return (
-        <div className="container">
-            <MainMenu menu='splash' />
-            <Scoreboard total={this.state.totalAnswers} correct={this.state.correctAnswers} wrong={this.state.wrongAnswers} />
-            <h2>Location</h2>
-            <Capital location={this.state.start.location} data={this.state.start.data} type="question" />
+    render() {
+        const { totalAnswers, correctAnswers, wrongAnswers, start, answerA, answerB } = this.state
+        return (
+            <div className="container">
+                <MainMenu menu='splash' />
+                <Scoreboard total={totalAnswers} correct={correctAnswers} wrong={wrongAnswers} />
+                <h2>Location</h2>
+                <Capital location={start.location} data={start.data} type="question" />
 
-            <h2>Which is closer?</h2>
-            <Capital location={this.state.answerA.location} showDistance={this.state.answerA.showDistance} distance={this.state.answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-            <Capital location={this.state.answerB.location} showDistance={this.state.answerB.showDistance} distance={this.state.answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+                <h2>Which is closer?</h2>
+                <Capital location={answerA.location} showDistance={answerA.showDistance} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+                <Capital location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
 
-            <button type="button" onClick={this.nextGame}>Next Round</button>
-        </div>
-    );
-  }
+                <button type="button" onClick={this.nextGame}>Next Round</button>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App

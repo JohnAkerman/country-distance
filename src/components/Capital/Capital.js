@@ -9,7 +9,6 @@ class Capital extends Component {
             correct: null,
             distance: props.distance,
             location: props.location,
-            classes: 'capital',
             showDistance: false
         }
 
@@ -32,7 +31,6 @@ class Capital extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        // You don't have to do this check first, but it can help prevent an unneeded render
         if (nextProps.location !== this.state.location) {
             this.setState({
                 location: nextProps.location,
@@ -50,28 +48,14 @@ class Capital extends Component {
             }))
 
             this.returnGuessToApp(this)
-
         }
-
-        this.setState({
-            classes: this.getAnswerStatus()
-        })
     }
 
-    getAnswerStatus() {
+    getAnswerStatusClass() {
         let className = 'capital'
-
-        if (this.state.correct === false) {
-            className += ' is-wrong'
-        }
-        else if (this.state.correct === true) {
-            className += ' is-correct'
-        }
-
-        if (this.state.selected) {
-            className += ' is-selected'
-        }
-
+        className += (this.state.correct) ? ' is-correct' : ''
+        className += (this.state.correct === false) ? ' is-wrong' : ''
+        className += (this.state.selected) ? ' is-selected' : ''
         return className
     }
 
@@ -84,11 +68,11 @@ class Capital extends Component {
     }
 
     render() {
-        var classes = this.getAnswerStatus()
+        const { capital, countryName } = this.props.location
         return (
-                <div className={classes} onClick={this.onClick}>
-                <h3 className="capital__title">{this.props.location.capital} {this.renderDistance() }</h3>
-                <span className="capital__country">{this.props.location.countryName}</span>
+                <div className={this.getAnswerStatusClass()} onClick={this.onClick}>
+                <h3 className="capital__title">{capital} {this.renderDistance() }</h3>
+                <span className="capital__country">{countryName}</span>
             </div>
         )
     }
