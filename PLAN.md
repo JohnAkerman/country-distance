@@ -7,6 +7,8 @@
 User is presented with a centre city, e.g. London.
 They are then provided with two other cities and they have to guess which is the closest to the centre city.
 
+## Bugs
+- All three locations *could* become the same value
 
 ## Planned Ideas
 
@@ -29,6 +31,9 @@ They are then provided with two other cities and they have to guess which is the
     - [ ] Splash screen
     - [ ] Game screen
     - [ ] Settings
+        - [ ] Ability to swap between km/miles
+        - [ ] Ability to hide country names (Improve score greatly)
+        - [ ] Continent filtering, so only countries in Asia
 - [ ] Allow ability to make it harder by showing more locations
     - [ ] Allow for 50/50 (reduced points)
     - [ ] Sort by distance, allow users to order the cities by closest using drag and drop
