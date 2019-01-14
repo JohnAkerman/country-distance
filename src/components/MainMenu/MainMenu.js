@@ -27,10 +27,6 @@ class MainMenu extends Component {
         this.setState({ currentMenu: type })
     }
 
-    menuBtn = (newMenu) => {
-        this.changeMenu(newMenu)
-    }
-
     render() {
         if (this.state.currentMenu === 'game') {
             return (null)
@@ -38,7 +34,7 @@ class MainMenu extends Component {
             return (
                 <div className="menu menu--splash">
                     <h1>Country Distance</h1>
-                    <button className="btn" onClick={this.menuBtn.bind(this, 'game')}>Play Game</button>
+                    <button className="btn" onClick={() => this.changeMenu('game')}>Play Game</button>
                 </div>
             )
         }
