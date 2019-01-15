@@ -67,10 +67,15 @@ class Capital extends Component {
         }
     }
 
+    getFlagURL() {
+        return `${require('svg-country-flags/svg/' + this.props.location.countryCode.toLowerCase() + '.svg')}`
+    }
+
     render() {
         const { capital, countryName } = this.props.location
         return (
-                <div className={this.getAnswerStatusClass()} onClick={this.onClick}>
+            <div className={this.getAnswerStatusClass()} onClick={this.onClick}>
+                <img className="capital__flag" src={this.getFlagURL()} alt="Flag" />
                 <h3 className="capital__title">{capital} {this.renderDistance() }</h3>
                 <span className="capital__country">{countryName}</span>
             </div>

@@ -25,3 +25,13 @@
 .capital__country {
     display: inline-block;
 }
+
+.capital__flag {
+    max-height: 40px;
+    max-width: 40px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+    position: relative;
+    top: 3px;
+}
