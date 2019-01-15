@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import capitals from './lib/capitalData.json'
 import { distanceBetween, randomBetween } from './lib/helpers'
 
-import { Capital, Scoreboard, MainMenu } from './components'
+import { Capital, Scoreboard, MainMenu, Timer } from './components'
 
 class App extends Component {
     constructor() {
@@ -54,6 +54,13 @@ class App extends Component {
             },
             providedAnswer: false
         })
+
+
+        setTimeout(() => {
+            console.log('Starting timer...')
+            this._child.resetTimer()
+            this._child.startTimer()
+        }, 10)
     }
 
     getRandomCapital() {
@@ -103,22 +110,36 @@ class App extends Component {
                 answerB
             }))
         }
+
+        this._child.stopTimer()
+    }
+
+    onTimerFinish() {
+        console.log('This is a top level event!')
     }
 
     render() {
         const { totalAnswers, correctAnswers, wrongAnswers, start, answerA, answerB } = this.state
+        const containerStyle = {
+            maxWidth: '700px',
+            margin: '0 auto',
+            padding: '0 15px'
+        }
         return (
-            <div className="container">
-                <MainMenu menu='splash' />
+            <div>
+                <MainMenu menu='game' />
                 <Scoreboard total={totalAnswers} correct={correctAnswers} wrong={wrongAnswers} />
-                <h2>Location</h2>
-                <Capital location={start.location} data={start.data} type="question" />
+                <div className="container" style={containerStyle}>
+                    <h2>Location</h2>
+                    <Capital location={start.location} data={start.data} type="question" />
 
-                <h2>Which is closer?</h2>
-                <Capital location={answerA.location} showDistance={answerA.showDistance} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-                <Capital location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+                    <h2>Which is closer?</h2>
+                    <Capital location={answerA.location} showDistance={answerA.showDistance} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+                    <Capital location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
 
-                <button type="button" onClick={this.nextGame}>Next Round</button>
+                    <button type="button" onClick={this.nextGame}>Next Round</button>
+                    <Timer duration="10" ref={(child) => { this._child = child }} onFinish={() => { this.onTimerFinish() }} />
+                </div>
             </div>
         )
     }

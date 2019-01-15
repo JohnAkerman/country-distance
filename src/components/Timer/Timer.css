@@ -1,0 +1,15 @@
+.timer {
+    width: 100%;
+    background-color: #5ab5e8;
+    height: 5px;
+    margin-bottom: 5px;
+    transition: width 0.3s ease
+}
+
+.timer.med {
+    background-color: #e8b45a;
+}
+
+.timer.low {
+    background-color: #e85a5a;
+}

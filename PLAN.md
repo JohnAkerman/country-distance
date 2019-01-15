@@ -37,6 +37,7 @@ They are then provided with two other cities and they have to guess which is the
 - [ ] Allow ability to make it harder by showing more locations
     - [ ] Allow for 50/50 (reduced points)
     - [ ] Sort by distance, allow users to order the cities by closest using drag and drop
+- [ ]  Allow user to use current location (JS geolocation) for centre point
 - [ ] Set certain locations 'easy' such as London, others are hard such as Gaborone, Botswanan
 - [ ] Ability to show city on a map after question is answered, useful for very tough questions
 - [ ] Toggle flags to make it easier - using ISO flags. How to load via node modules?
