@@ -78,10 +78,7 @@ class Timer extends Component {
         classes += (this.state.progress < 20) ? ' low' : ''
 
         return (
-            <div>
-                <div className={classes} style={{width: this.state.progress + '%'}}></div>
-                <button onClick={this.startTimer}>Start Timer</button>
-            </div>
+            <div className={classes} style={{ width: this.state.progress + '%'}}></div>
         )
     }
 }
