@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './custom.scss';
+
 import capitals from './lib/capitalData.json'
 import { distanceBetween, randomBetween } from './lib/helpers'
 
@@ -137,7 +139,7 @@ class App extends Component {
                     <Capital location={answerA.location} showDistance={answerA.showDistance} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                     <Capital location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
 
-                    <button type="button" onClick={this.nextGame}>Next Round</button>
+                    <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
                     <Timer duration="10" ref={(child) => { this._child = child }} onFinish={() => { this.onTimerFinish() }} />
                 </div>
             </div>
