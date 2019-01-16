@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Capital.css'
+import './Capital.scss'
 
 class Capital extends Component {
     constructor(props) {

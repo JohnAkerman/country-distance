@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './Timer.css'
+import './Timer.scss'
 
 class Timer extends Component {
 

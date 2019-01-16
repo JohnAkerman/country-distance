@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './MainMenu.css'
+import './MainMenu.scss'
 
 class MainMenu extends Component {
 
