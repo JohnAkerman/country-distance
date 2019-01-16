@@ -11,6 +11,8 @@
     "svg-country-flags": "^1.2.6"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -19,6 +21,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://JohnAkerman.github.io/country-distance",
   "browserslist": [
     ">0.2%",
     "not dead",
