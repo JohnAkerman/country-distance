@@ -16,16 +16,29 @@ class App extends Component {
             correctAnswers: 0,
             wrongAnswers: 0,
             totalAnswers: 0,
-            timeUp: false
+            timeUp: false,
+            menu: 'splash'
         }
     }
 
     componentWillMount() {
-        this.startGame()
+        this.nextGame()
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        // Check to see whether the game is starting
+        if (nextState.menu !== this.state.menu && nextState.menu === 'game') {
+            this.startGame()
+        }
     }
 
     startGame() {
         this.nextGame()
+        setTimeout(() => {
+            console.log('Starting timer...')
+            this._childTimer.resetTimer()
+            this._childTimer.startTimer()
+        }, 10)
     }
 
     nextGame = () => {
@@ -56,15 +69,8 @@ class App extends Component {
                 showDistance: false,
             },
             providedAnswer: false,
-            timeUp: false
+            timeUp: false,
         })
-
-
-        setTimeout(() => {
-            console.log('Starting timer...')
-            this._childTimer.resetTimer()
-            this._childTimer.startTimer()
-        }, 10)
     }
 
     getRandomCapital() {
@@ -130,23 +136,34 @@ class App extends Component {
             margin: '0 auto',
             padding: '0 15px'
         }
-        return (
-            <div>
-                <MainMenu menu='game' />
-                <Scoreboard total={totalAnswers} correct={correctAnswers} wrong={wrongAnswers} />
-                <div className="container" style={containerStyle}>
-                    <h2>Location</h2>
-                    <Capital location={start.location} data={start.data} type="question" />
 
-                    <h2>Which is closer?</h2>
-                    <Capital location={answerA.location} showDistance={answerA.showDistance} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-                    <Capital location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+        if (this.state.menu === 'splash') {
+            return (
+                <MainMenu menu={this.state.menu} onMenuChange={(menu) => { this.setState({menu}) }} />
+            )
+        } else if (this.state.menu === 'settings') {
+            return (
+                <MainMenu menu={this.state.menu} onMenuChange={(menu) => { this.setState({menu}) }} />
+            )
+        } else if (this.state.menu === 'game') {
+            return (
+                <div>
+                    <MainMenu menu={this.state.menu} onMenuChange={(menu) => { this.setState({menu}) }} />
+                    <Scoreboard total={totalAnswers} correct={correctAnswers} wrong={wrongAnswers} />
+                    <div className="container" style={containerStyle}>
+                        <h2>Location</h2>
+                        <Capital location={start.location} data={start.data} type="question" />
 
-                    <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
-                    <Timer duration="10" ref={(child) => { this._childTimer = child }} onFinish={() => { this.onTimerFinish() }} />
+                        <h2>Which is closer?</h2>
+                        <Capital location={answerA.location} showDistance={answerA.showDistance} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+                        <Capital location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+
+                        <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
+                        <Timer duration="10" menu={this.state.menu} ref={(child) => { this._childTimer = child }} onFinish={() => { this.onTimerFinish() }} />
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 

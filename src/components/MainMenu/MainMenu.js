@@ -11,13 +11,6 @@ class MainMenu extends Component {
     constructor(props) {
         super(props)
 
-        const menuTypes = {
-            game: 'game',
-            splash: 'splash',
-            setting: 'settings',
-            gameover: 'gameover'
-        }
-
         this.state = {
             currentMenu: this.props.menu
         }
@@ -25,6 +18,11 @@ class MainMenu extends Component {
 
     changeMenu(type) {
         this.setState({ currentMenu: type })
+        this.props.onMenuChange(type)
+    }
+
+    saveSettings() {
+
     }
 
     render() {
@@ -34,7 +32,15 @@ class MainMenu extends Component {
             return (
                 <div className="menu menu--splash">
                     <h1>Country Distance</h1>
-                    <button className="btn" onClick={() => this.changeMenu('game')}>Play Game</button>
+                    <button className="btn" onClick={() => this.changeMenu('game')}>Play Game</button><br />
+                    <button className="btn" onClick={() => this.changeMenu('settings')}>Settings</button>
+                </div>
+            )
+        } else if (this.state.currentMenu === 'settings') {
+            return (
+                <div className="menu menu--settings">
+                    <h1>Settings</h1>
+                    <button className="btn" onClick={() => { this.saveSettings(); this.changeMenu('splash')} }>Save Settings</button>
                 </div>
             )
         }

@@ -12,14 +12,14 @@ class Timer extends Component {
             ticker: parseInt(this.props.duration, 10),
             running: false,
             finished: false,
-            ratio: 100
+            ratio: 100,
         }
 
         this.timer = null
     }
 
     tick = () => {
-        if (this.state.running) {
+        if (this.state.running && this.props.menu === 'game') {
             if (this.state.ticker <= 0) {
                 this.setState({
                     running: false,

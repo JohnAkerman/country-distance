@@ -34,6 +34,7 @@ They are then provided with two other cities and they have to guess which is the
         - [ ] Ability to swap between km/miles
         - [ ] Ability to hide country names (Improve score greatly)
         - [ ] Continent filtering, so only countries in Asia
+        - [ ] Dark mode
 - [ ] Allow ability to make it harder by showing more locations
     - [ ] Allow for 50/50 (reduced points)
     - [ ] Sort by distance, allow users to order the cities by closest using drag and drop
