@@ -16,6 +16,7 @@ class App extends Component {
             correctAnswers: 0,
             wrongAnswers: 0,
             totalAnswers: 0,
+            timeUp: false
         }
     }
 
@@ -54,14 +55,15 @@ class App extends Component {
                 distance: distanceBetween(locationStart, locationB),
                 showDistance: false,
             },
-            providedAnswer: false
+            providedAnswer: false,
+            timeUp: false
         })
 
 
         setTimeout(() => {
             console.log('Starting timer...')
-            this._child.resetTimer()
-            this._child.startTimer()
+            this._childTimer.resetTimer()
+            this._childTimer.startTimer()
         }, 10)
     }
 
@@ -74,7 +76,7 @@ class App extends Component {
     }
 
     updateAppState = guess => {
-        if (!this.state.providedAnswer) {
+        if (!this.state.providedAnswer && !this.state.timeUp) {
             this.setState({providedAnswer: true})
             this.checkAnswer(guess)
         }
@@ -113,11 +115,12 @@ class App extends Component {
             }))
         }
 
-        this._child.stopTimer()
+        this._childTimer.stopTimer()
     }
 
     onTimerFinish() {
         console.log('This is a top level event!')
+        this.setState({ timeUp: true })
     }
 
     render() {
@@ -140,7 +143,7 @@ class App extends Component {
                     <Capital location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
 
                     <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
-                    <Timer duration="10" ref={(child) => { this._child = child }} onFinish={() => { this.onTimerFinish() }} />
+                    <Timer duration="10" ref={(child) => { this._childTimer = child }} onFinish={() => { this.onTimerFinish() }} />
                 </div>
             </div>
         )
