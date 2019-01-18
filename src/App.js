@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './custom.scss';
 
-import Locations from './lib/LocationData.json'
+import Locations from './lib/locationData.json'
 import { distanceBetween, randomBetween } from './lib/helpers'
 
 import { Location, Scoreboard, MainMenu, Timer } from './components'
@@ -17,7 +17,8 @@ class App extends Component {
             wrongAnswers: 0,
             totalAnswers: 0,
             timeUp: false,
-            menu: 'splash'
+            menu: 'splash',
+            distanceDisplayType: 'km'
         }
     }
 
