@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './MainMenu.scss'
 
+import {CountryConsumer} from '../../context.js'
+
 class MainMenu extends Component {
 
     // Diffferent menus
@@ -39,6 +41,12 @@ class MainMenu extends Component {
         } else if (this.state.currentMenu === 'settings') {
             return (
                 <div className="menu menu--settings">
+                    <CountryConsumer>
+                    {value => {
+                        console.log(value)
+                        return value.isActive.toString()
+                    }}
+                    </CountryConsumer>
                     <h1>Settings</h1>
                     <button className="btn" onClick={() => { this.saveSettings(); this.changeMenu('splash')} }>Save Settings</button>
                 </div>
