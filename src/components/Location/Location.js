@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './Capital.scss'
+import './Location.scss'
 
-class Capital extends Component {
+class Location extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -52,7 +52,7 @@ class Capital extends Component {
     }
 
     getAnswerStatusClass() {
-        let className = 'capital'
+        let className = 'location'
         className += (this.state.correct) ? ' is-correct' : ''
         className += (this.state.correct === false) ? ' is-wrong' : ''
         className += (this.state.selected) ? ' is-selected' : ''
@@ -62,7 +62,7 @@ class Capital extends Component {
     renderDistance() {
         if (this.props.showDistance) {
             return (
-                <span className="capital__dist">{this.props.distance} km</span>
+                <span className="location__dist">{this.props.distance} km</span>
             )
         }
     }
@@ -75,12 +75,12 @@ class Capital extends Component {
         const { capital, countryName } = this.props.location
         return (
             <div className={this.getAnswerStatusClass()} onClick={this.onClick}>
-                <img className="capital__flag" src={this.getFlagURL()} alt="Flag" />
-                <h3 className="capital__title">{capital} {this.renderDistance() }</h3>
-                <span className="capital__country">{countryName}</span>
+                <img className="location__flag" src={this.getFlagURL()} alt="Flag" />
+                <h3 className="location__title">{capital} {this.renderDistance() }</h3>
+                <span className="location__country">{countryName}</span>
             </div>
         )
     }
 }
 
-export default Capital
+export default Location

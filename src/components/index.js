@@ -1,4 +1,4 @@
-export {default as Capital} from './Capital/Capital'
+export {default as Location} from './Location/Location'
 export {default as Scoreboard} from './Scoreboard/Scoreboard'
 export {default as MainMenu} from './MainMenu/MainMenu'
 export {default as Timer} from './Timer/Timer'
