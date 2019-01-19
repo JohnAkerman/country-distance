@@ -5,7 +5,7 @@ class Dropdown extends Component {
 
     constructor(props) {
         super(props)
-
+        console.log(props)
         this.state = {
             selected: this.props.initial || this.props.opts[0]
         }
