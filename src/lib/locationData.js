@@ -1,4 +1,6 @@
-[
+export const regions = ["Africa", "Asia", "Australia", "Central America", "Europe", "North America", "South America"]
+
+export const locationData = [
   {
     "countryName": "Afghanistan",
     "capital": "Kabul",

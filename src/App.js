@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './custom.scss';
 
-import Locations from './lib/locationData.json'
+import { locationData } from './lib/locationData.js'
 import { distanceBetween, randomBetween } from './lib/helpers'
 
 import { Location, Scoreboard, MainMenu, Timer } from './components'
@@ -88,7 +88,7 @@ class App extends Component {
     }
 
     getRandomLocation() {
-        return Locations[randomBetween(0, Locations.length)];
+        return locationData[randomBetween(0, locationData.length)];
     }
 
     getSelectedAnswer(a, b) {
