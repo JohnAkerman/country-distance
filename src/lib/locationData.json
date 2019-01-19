@@ -1248,14 +1248,6 @@
     "continent": "Asia"
   },
   {
-    "countryName": "Northern Cyprus",
-    "capital": "North Nicosia",
-    "lat": "35.183333",
-    "lng": "33.366667",
-    "countryCode": "NULL",
-    "continent": "Europe"
-  },
-  {
     "countryName": "Northern Mariana Islands",
     "capital": "Saipan",
     "lat": "15.2",
@@ -1581,14 +1573,6 @@
     "lat": "2.066666667",
     "lng": "45.333333",
     "countryCode": "SO",
-    "continent": "Africa"
-  },
-  {
-    "countryName": "Somaliland",
-    "capital": "Hargeisa",
-    "lat": "9.55",
-    "lng": "44.05",
-    "countryCode": "NULL",
     "continent": "Africa"
   },
   {
