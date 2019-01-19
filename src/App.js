@@ -23,7 +23,7 @@ class App extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.nextGame()
     }
 
@@ -183,7 +183,10 @@ class App extends Component {
                         <h2 className="question__heading">Which is closer?</h2>
                         <Location location={answerA.location} showFlags={this.state.showFlags} showDistance={answerA.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                         <Location location={answerB.location} showFlags={this.state.showFlags} showDistance={answerB.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-                        <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
+                        <button type="button" className="mb-3" onClick={() => { setTimeout(() => {
+                            this._childTimer.resetTimer()
+                            this._childTimer.startTimer()
+                        }, 10); this.nextGame() }}>Next Round</button>
                     </div>
                 </React.Fragment>
             )
