@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './MainMenu.scss'
-import { Toggle } from '../../components'
+import { Toggle, Dropdown } from '../../components'
+import { regions } from '../../lib/locationData.js'
 
 class MainMenu extends Component {
 
@@ -53,6 +54,8 @@ class MainMenu extends Component {
                     <h1>Settings</h1>
                     <Toggle initial={(this.props.distanceDisplayType === 'km' ? true : false )} onToggle={(val) => { this.handleDistanceType(val) }} activeLabel='Kilometers' inactiveLabel='Miles' />
                     <Toggle initial={this.props.showFlags} onToggle={(val) => { this.handleFlagToggle(val) }} heading='Show Flags' activeLabel='Yes' inactiveLabel='No' />
+
+                    <Dropdown heading="Regions" onChange={(val) => { console.log(val)}} opts={regions} />
                     <button className="btn" onClick={() => { this.saveSettings(); this.changeMenu('splash')} }>Save Settings</button>
                 </div>
             )

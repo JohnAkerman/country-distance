@@ -1,4 +1,4 @@
-export const regions = ["Africa", "Asia", "Australia", "Central America", "Europe", "North America", "South America"]
+export const regions = ["All", "Africa", "Asia", "Australia", "Central America", "Europe", "North America", "South America"]
 
 export const locationData = [
   {
