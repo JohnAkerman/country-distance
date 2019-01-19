@@ -71,14 +71,21 @@ class Location extends Component {
     }
 
     getFlagURL() {
-         return `${require('svg-country-flags/svg/' + this.props.location.countryCode.toLowerCase() + '.svg')}`
+        let flagString = null;
+        try {
+            flagString = `${require('svg-country-flags/svg/' + this.props.location.countryCode.toLowerCase() + '.svg')}`
+            return flagString
+        } catch(e) {
+            console.log('Using fallback', this.props.location.countryName)
+            return flagString = `fallback.svg`
+        }
     }
 
     render() {
-        const { capital, countryName } = this.props.location
+        const { capital, countryName, countryCode } = this.props.location
         return (
             <div className={this.getAnswerStatusClass()} onClick={this.onClick}>
-                {this.props.showFlags && <img className="location__flag" src={this.getFlagURL()} alt="Flag" />}
+                {this.props.showFlags && <img className="location__flag" src={this.getFlagURL()} alt={countryCode && " Flag"} />}
                 <h3 className="location__title">{capital} {this.renderDistance() }</h3>
                 <span className="location__country">{countryName}</span>
             </div>
