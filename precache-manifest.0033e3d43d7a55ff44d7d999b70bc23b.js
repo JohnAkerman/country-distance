@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/country-distance/static/media/kp.770cb198.svg"
   },
   {
-    "revision": "83bb22769f3355443ba6",
-    "url": "/country-distance/static/css/main.65ce518d.chunk.css"
+    "revision": "c152a8f226f6a3aacd8c",
+    "url": "/country-distance/static/css/main.3f07bc38.chunk.css"
   },
   {
-    "revision": "925ecc03afad1cd51cf7",
-    "url": "/country-distance/static/js/1.925ecc03.chunk.js"
+    "revision": "fc8bd2946576327928b2",
+    "url": "/country-distance/static/js/1.fc8bd294.chunk.js"
   },
   {
     "revision": "bdbbc1a2fb7fd533c408",
@@ -520,8 +520,8 @@ self.__precacheManifest = [
     "url": "/country-distance/static/media/kn.c991c407.svg"
   },
   {
-    "revision": "83bb22769f3355443ba6",
-    "url": "/country-distance/static/js/main.83bb2276.chunk.js"
+    "revision": "c152a8f226f6a3aacd8c",
+    "url": "/country-distance/static/js/main.c152a8f2.chunk.js"
   },
   {
     "revision": "e7ceeb083f6540d5f61fe2dbd2b22d77",
@@ -1040,7 +1040,7 @@ self.__precacheManifest = [
     "url": "/country-distance/static/media/zw.80632a3c.svg"
   },
   {
-    "revision": "f31a52526ce4826febb51ad7833e6745",
+    "revision": "6902c164872b9209e718994bc6d041d5",
     "url": "/country-distance/index.html"
   }
 ];

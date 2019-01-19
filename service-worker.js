@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/country-distance/precache-manifest.fd4b7d0a4620b935b0481cf5badc563c.js"
+  "/country-distance/precache-manifest.0033e3d43d7a55ff44d7d999b70bc23b.js"
 );
 
 workbox.clientsClaim();
