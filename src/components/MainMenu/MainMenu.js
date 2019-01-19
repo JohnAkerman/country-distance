@@ -14,7 +14,8 @@ class MainMenu extends Component {
 
         this.state = {
             currentMenu: this.props.menu,
-            distanceDisplayType: this.props.distanceDisplayType
+            distanceDisplayType: this.props.distanceDisplayType,
+            showFlags: this.props.showFlags
         }
     }
 
@@ -29,6 +30,10 @@ class MainMenu extends Component {
 
     handleDistanceType(val) {
         this.setState({ distanceDisplayType: val ? 'km' : 'miles' })
+    }
+
+    handleFlagToggle(showFlags) {
+        this.setState({ showFlags })
     }
 
     render() {
@@ -47,6 +52,7 @@ class MainMenu extends Component {
                 <div className="menu menu--settings">
                     <h1>Settings</h1>
                     <Toggle initial={(this.props.distanceDisplayType === 'km' ? true : false )} onToggle={(val) => { this.handleDistanceType(val) }} activeLabel='Kilometers' inactiveLabel='Miles' />
+                    <Toggle initial={this.props.showFlags} onToggle={(val) => { this.handleFlagToggle(val) }} heading='Show Flags' activeLabel='Yes' inactiveLabel='No' />
                     <button className="btn" onClick={() => { this.saveSettings(); this.changeMenu('splash')} }>Save Settings</button>
                 </div>
             )

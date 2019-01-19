@@ -78,7 +78,7 @@ class Location extends Component {
         const { capital, countryName } = this.props.location
         return (
             <div className={this.getAnswerStatusClass()} onClick={this.onClick}>
-                <img className="location__flag" src={this.getFlagURL()} alt="Flag" />
+                {this.props.showFlags && <img className="location__flag" src={this.getFlagURL()} alt="Flag" />}
                 <h3 className="location__title">{capital} {this.renderDistance() }</h3>
                 <span className="location__country">{countryName}</span>
             </div>
