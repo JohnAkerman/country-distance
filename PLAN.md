@@ -32,6 +32,7 @@ They are then provided with two other cities and they have to guess which is the
     - [ ] Game screen
     - [ ] Settings
         - [x] Ability to swap between km/miles
+        - [x] Toggle flags to make it easier - using ISO flags
         - [ ] Ability to hide country names (Improve score greatly)
         - [ ] Continent filtering, so only countries in Asia
         - [ ] Dark mode
@@ -41,7 +42,6 @@ They are then provided with two other cities and they have to guess which is the
 - [ ]  Allow user to use current location (JS geolocation) for centre point
 - [ ] Set certain locations 'easy' such as London, others are hard such as Gaborone, Botswanan
 - [ ] Ability to show city on a map after question is answered, useful for very tough questions
-- [ ] Toggle flags to make it easier - using ISO flags. How to load via node modules?
 - [ ] Points system = time used * difficulty of question?
 
 
