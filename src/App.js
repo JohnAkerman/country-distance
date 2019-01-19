@@ -37,7 +37,6 @@ class App extends Component {
     startGame() {
         this.nextGame()
         setTimeout(() => {
-            console.log('Starting timer...')
             this._childTimer.resetTimer()
             this._childTimer.startTimer()
         }, 10)
@@ -127,7 +126,6 @@ class App extends Component {
     }
 
     onTimerFinish() {
-        console.log('This is a top level event!')
         this.setState({ timeUp: true })
     }
 
@@ -138,7 +136,6 @@ class App extends Component {
             showFlags: newState.showFlags
         })
     }
-
 
     render() {
         const { totalAnswers, correctAnswers, wrongAnswers, start, answerA, answerB } = this.state
@@ -160,22 +157,22 @@ class App extends Component {
             )
         } else if (this.state.menu === 'game') {
             return (
-                <div>
+                <React.Fragment>
                     <MainMenu menu={this.state.menu} showFlags={this.state.showFlags} distanceDisplayType={this.state.distanceDisplayType} onSaveSettings={(s) => { this.handleSaveSettings(s) }} onMenuChange={(menu) => { this.setState({menu}) }} />
                     <Scoreboard total={totalAnswers} correct={correctAnswers} wrong={wrongAnswers} />
-                    <div class="question__wrapper">
-                        <div class="container">
+                    <div className="question__wrapper">
+                        <div className="container">
                             <Location location={start.location} showFlags={this.state.showFlags} distanceDisplayType={this.state.distanceDisplayType} data={start.data} type="question" />
                             <Timer duration="10" menu={this.state.menu} ref={(child) => { this._childTimer = child }} onFinish={() => { this.onTimerFinish() }} />
                         </div>
                     </div>
                     <div className="container" style={containerStyle}>
-                        <h2>Which is closer?</h2>
+                        <h2 className="question__heading">Which is closer?</h2>
                         <Location location={answerA.location} showFlags={this.state.showFlags} showDistance={answerA.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                         <Location location={answerB.location} showFlags={this.state.showFlags} showDistance={answerB.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                         <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
                     </div>
-                </div>
+                </React.Fragment>
             )
         }
     }

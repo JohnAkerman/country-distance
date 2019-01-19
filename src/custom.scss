@@ -10,6 +10,7 @@ body {
 .question__wrapper {
     background-color: white;
     padding: 10px 0;
+    margin-bottom: 15px;
 
     .location {
         background-color: white;
@@ -18,4 +19,11 @@ body {
         margin-bottom: 15px;
         border: 0
     }
+}
+
+.question__heading {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 15px;
+    font-weight: 400;
 }

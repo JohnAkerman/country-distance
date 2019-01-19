@@ -38,7 +38,6 @@ class Timer extends Component {
     }
 
     startTimer = () => {
-        console.log('Start Timer!')
         this.setState({
             running: true,
             finished: false
@@ -63,7 +62,6 @@ class Timer extends Component {
     }
 
     onFinish = () => {
-        console.log('Timer finished!')
         this.props.onFinish()
     }
 
