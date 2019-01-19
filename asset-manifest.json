@@ -1,9 +1,9 @@
 {
-  "main.css": "/country-distance/static/css/main.df877c5e.chunk.css",
-  "main.js": "/country-distance/static/js/main.39dc814b.chunk.js",
-  "main.js.map": "/country-distance/static/js/main.39dc814b.chunk.js.map",
-  "static/js/1.fc8bd294.chunk.js": "/country-distance/static/js/1.fc8bd294.chunk.js",
-  "static/js/1.fc8bd294.chunk.js.map": "/country-distance/static/js/1.fc8bd294.chunk.js.map",
+  "main.css": "/country-distance/static/css/main.2fb819b0.chunk.css",
+  "main.js": "/country-distance/static/js/main.15cc1d27.chunk.js",
+  "main.js.map": "/country-distance/static/js/main.15cc1d27.chunk.js.map",
+  "static/js/1.ca867c6f.chunk.js": "/country-distance/static/js/1.ca867c6f.chunk.js",
+  "static/js/1.ca867c6f.chunk.js.map": "/country-distance/static/js/1.ca867c6f.chunk.js.map",
   "runtime~main.js": "/country-distance/static/js/runtime~main.bdbbc1a2.js",
   "runtime~main.js.map": "/country-distance/static/js/runtime~main.bdbbc1a2.js.map",
   "static/media/lc.svg": "/country-distance/static/media/lc.3995dda7.svg",
@@ -262,8 +262,8 @@
   "static/media/za.svg": "/country-distance/static/media/za.bb194490.svg",
   "static/media/zm.svg": "/country-distance/static/media/zm.53783063.svg",
   "static/media/zw.svg": "/country-distance/static/media/zw.80632a3c.svg",
-  "static/css/main.df877c5e.chunk.css.map": "/country-distance/static/css/main.df877c5e.chunk.css.map",
+  "static/css/main.2fb819b0.chunk.css.map": "/country-distance/static/css/main.2fb819b0.chunk.css.map",
   "index.html": "/country-distance/index.html",
-  "precache-manifest.9dcc50d5d74fa9b29a099bd1ba3a17b7.js": "/country-distance/precache-manifest.9dcc50d5d74fa9b29a099bd1ba3a17b7.js",
+  "precache-manifest.79d7d5b6bf67e32d6bd14f88f988cd34.js": "/country-distance/precache-manifest.79d7d5b6bf67e32d6bd14f88f988cd34.js",
   "service-worker.js": "/country-distance/service-worker.js"
 }
