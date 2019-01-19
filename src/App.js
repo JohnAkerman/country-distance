@@ -22,6 +22,8 @@ class App extends Component {
             showFlags: true,
             activeRegion: regions[0]
         }
+
+        this.regionCache = []
     }
 
     componentDidMount() {
@@ -92,9 +94,17 @@ class App extends Component {
         if (this.state.activeRegion === 'All') {
             return locationData[randomBetween(0, locationData.length)];
         } else {
-            // This feels a bit messy where I am filtering the list each time I request a location - cache them in a variable?
-            const filteredLocations = locationData.filter(item => item.continent === this.state.activeRegion)
-            return filteredLocations[randomBetween(0, filteredLocations.length)];
+
+            // Check to see if we have already filtered regions previously.
+            if (typeof this.regionCache[this.state.activeRegion] !== 'undefined' && this.regionCache[this.state.activeRegion].length > 0) {
+                console.log('Pulled from cache')
+                return this.regionCache[this.state.activeRegion][randomBetween(0, this.regionCache[this.state.activeRegion].length)] // Jeez
+            } else {
+                console.log('Creating cache')
+                const filteredLocations = locationData.filter(item => item.continent === this.state.activeRegion)
+                this.regionCache[this.state.activeRegion] = filteredLocations
+                return filteredLocations[randomBetween(0, filteredLocations.length)];
+            }
         }
     }
 
