@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './MainMenu.scss'
+import { Toggle } from '../../components'
 
 class MainMenu extends Component {
 
@@ -12,7 +13,8 @@ class MainMenu extends Component {
         super(props)
 
         this.state = {
-            currentMenu: this.props.menu
+            currentMenu: this.props.menu,
+            distanceDisplayType: this.props.distanceDisplayType
         }
     }
 
@@ -22,7 +24,11 @@ class MainMenu extends Component {
     }
 
     saveSettings() {
+        this.props.onSaveSettings(this.state)
+    }
 
+    handleDistanceType(val) {
+        this.setState({ distanceDisplayType: val ? 'km' : 'miles' })
     }
 
     render() {
@@ -40,6 +46,7 @@ class MainMenu extends Component {
             return (
                 <div className="menu menu--settings">
                     <h1>Settings</h1>
+                    <Toggle initial={(this.props.distanceDisplayType === 'km' ? true : false )} onToggle={(val) => { this.handleDistanceType(val) }} activeLabel='Kilometers' inactiveLabel='Miles' />
                     <button className="btn" onClick={() => { this.saveSettings(); this.changeMenu('splash')} }>Save Settings</button>
                 </div>
             )

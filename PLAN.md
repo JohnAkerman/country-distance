@@ -31,7 +31,7 @@ They are then provided with two other cities and they have to guess which is the
     - [ ] Splash screen
     - [ ] Game screen
     - [ ] Settings
-        - [ ] Ability to swap between km/miles
+        - [x] Ability to swap between km/miles
         - [ ] Ability to hide country names (Improve score greatly)
         - [ ] Continent filtering, so only countries in Asia
         - [ ] Dark mode
@@ -43,3 +43,18 @@ They are then provided with two other cities and they have to guess which is the
 - [ ] Ability to show city on a map after question is answered, useful for very tough questions
 - [ ] Toggle flags to make it easier - using ISO flags. How to load via node modules?
 - [ ] Points system = time used * difficulty of question?
+
+
+
+## Components
+
+### Location
+Renamed from Location, it is used to represent a location within the world, generally a Location city
+
+### MainMenu
+
+
+## Scoreboard
+
+
+## Timer

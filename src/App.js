@@ -18,7 +18,7 @@ class App extends Component {
             totalAnswers: 0,
             timeUp: false,
             menu: 'splash',
-            distanceDisplayType: 'km'
+            distanceDisplayType: 'miles'
         }
     }
 
@@ -130,6 +130,13 @@ class App extends Component {
         this.setState({ timeUp: true })
     }
 
+    handleSaveSettings(newState) {
+        this.setState({
+            distanceDisplayType: newState.distanceDisplayType
+        })
+    }
+
+
     render() {
         const { totalAnswers, correctAnswers, wrongAnswers, start, answerA, answerB } = this.state
         const containerStyle = {
@@ -140,24 +147,26 @@ class App extends Component {
 
         if (this.state.menu === 'splash') {
             return (
-                <MainMenu menu={this.state.menu} onMenuChange={(menu) => { this.setState({menu}) }} />
+                <React.Fragment>
+                    <MainMenu menu={this.state.menu} onSaveSettings={(s) => { this.handleSaveSettings(s) }} onMenuChange={(menu) => { this.setState({menu}) }} />
+                </React.Fragment>
             )
         } else if (this.state.menu === 'settings') {
             return (
-                <MainMenu menu={this.state.menu} onMenuChange={(menu) => { this.setState({menu}) }} />
+                <MainMenu menu={this.state.menu} onSaveSettings={(s) => { this.handleSaveSettings(s) }} onMenuChange={(menu) => { this.setState({menu}) }} />
             )
         } else if (this.state.menu === 'game') {
             return (
                 <div>
-                    <MainMenu menu={this.state.menu} onMenuChange={(menu) => { this.setState({menu}) }} />
+                    <MainMenu menu={this.state.menu} distanceDisplayType={this.state.distanceDisplayType} onSaveSettings={(s) => { this.handleSaveSettings(s) }} onMenuChange={(menu) => { this.setState({menu}) }} />
                     <Scoreboard total={totalAnswers} correct={correctAnswers} wrong={wrongAnswers} />
                     <div className="container" style={containerStyle}>
                         <h2>Location</h2>
-                        <Location location={start.location} data={start.data} type="question" />
+                        <Location location={start.location} distanceDisplayType={this.state.distanceDisplayType} data={start.data} type="question" />
 
                         <h2>Which is closer?</h2>
-                        <Location location={answerA.location} showDistance={answerA.showDistance} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-                        <Location location={answerB.location} showDistance={answerB.showDistance} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+                        <Location location={answerA.location} showDistance={answerA.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
+                        <Location location={answerB.location} showDistance={answerB.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
 
                         <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
                         <Timer duration="10" menu={this.state.menu} ref={(child) => { this._childTimer = child }} onFinish={() => { this.onTimerFinish() }} />

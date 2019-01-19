@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Location.scss'
 
+import { kmToMiles, numberWithCommas } from '../../lib/helpers'
+
 class Location extends Component {
     constructor(props) {
         super(props)
@@ -61,14 +63,15 @@ class Location extends Component {
 
     renderDistance() {
         if (this.props.showDistance) {
+            let dist = (this.props.distanceDisplayType === 'km' ? numberWithCommas(this.props.distance) + ' km' : numberWithCommas(kmToMiles(this.props.distance)) + ' miles')
             return (
-                <span className="location__dist">{this.props.distance} km</span>
+                <span className="location__dist">{dist}</span>
             )
         }
     }
 
     getFlagURL() {
-        return `${require('svg-country-flags/svg/' + this.props.location.countryCode.toLowerCase() + '.svg')}`
+         return `${require('svg-country-flags/svg/' + this.props.location.countryCode.toLowerCase() + '.svg')}`
     }
 
     render() {

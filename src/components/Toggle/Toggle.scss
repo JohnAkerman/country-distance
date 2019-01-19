@@ -1,0 +1,40 @@
+.toggle {
+    &__wrapper {
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 15px;
+    }
+
+    &__pill {
+        display: inline-block;
+        position: relative;
+        background-color: red;
+        width: 75px;
+        height: 30px;
+        border-radius: 50px;
+
+        &__inner {
+            width: 25px;
+            height: 80%;
+            position: absolute;
+            top: 10%;
+            border-radius: 50%;
+            background-color: green;
+            transition: right 0.2s, backgroundColor 0.2s;
+            right: 5%;
+        }
+
+        &.inactive {
+            .toggle__pill__inner {
+                right: 60%;
+                background-color: grey;
+
+            }
+        }
+    }
+
+
+    &__label {
+        display: inline-block;
+    }
+}

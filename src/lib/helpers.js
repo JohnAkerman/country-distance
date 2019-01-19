@@ -23,3 +23,11 @@ export const randomBetween = (min, max) => {
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
+export const kmToMiles = (i) => {
+    return Math.round(i * 0.621371)
+}
+
+export const numberWithCommas = (num) => {
+    return num.toLocaleString('en', {maximumSignificantDigits : 21})
+}
