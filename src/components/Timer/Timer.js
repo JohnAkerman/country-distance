@@ -78,7 +78,9 @@ class Timer extends Component {
         classes += (this.state.progress < 20) ? ' low' : ''
 
         return (
-            <div className={classes} style={{ width: this.state.progress + '%'}}></div>
+            <div className={classes}>
+                <div className="timer__inner" style={{ width: this.state.progress + '%'}}></div>
+            </div>
         )
     }
 }

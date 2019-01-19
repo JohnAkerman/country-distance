@@ -19,7 +19,7 @@ class App extends Component {
             timeUp: false,
             menu: 'splash',
             distanceDisplayType: 'miles',
-            showFlags: false
+            showFlags: true
         }
     }
 
@@ -163,16 +163,17 @@ class App extends Component {
                 <div>
                     <MainMenu menu={this.state.menu} showFlags={this.state.showFlags} distanceDisplayType={this.state.distanceDisplayType} onSaveSettings={(s) => { this.handleSaveSettings(s) }} onMenuChange={(menu) => { this.setState({menu}) }} />
                     <Scoreboard total={totalAnswers} correct={correctAnswers} wrong={wrongAnswers} />
+                    <div class="question__wrapper">
+                        <div class="container">
+                            <Location location={start.location} showFlags={this.state.showFlags} distanceDisplayType={this.state.distanceDisplayType} data={start.data} type="question" />
+                            <Timer duration="10" menu={this.state.menu} ref={(child) => { this._childTimer = child }} onFinish={() => { this.onTimerFinish() }} />
+                        </div>
+                    </div>
                     <div className="container" style={containerStyle}>
-                        <h2>Location</h2>
-                        <Location location={start.location} showFlags={this.state.showFlags} distanceDisplayType={this.state.distanceDisplayType} data={start.data} type="question" />
-
                         <h2>Which is closer?</h2>
                         <Location location={answerA.location} showFlags={this.state.showFlags} showDistance={answerA.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                         <Location location={answerB.location} showFlags={this.state.showFlags} showDistance={answerB.showDistance} distanceDisplayType={this.state.distanceDisplayType} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-
                         <button type="button" className="mb-3" onClick={this.nextGame}>Next Round</button>
-                        <Timer duration="10" menu={this.state.menu} ref={(child) => { this._childTimer = child }} onFinish={() => { this.onTimerFinish() }} />
                     </div>
                 </div>
             )

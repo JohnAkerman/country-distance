@@ -7,14 +7,14 @@ class Scoreboard extends Component {
 
         return (
             <div className="scoreboard">
-                <div className="score correct">
-                    <span className="figure">{correct}</span>
-                    <span className="title">Correct</span>
-                </div>
+                <div className="container">
+                    <div className="score correct">
+                        <span className="figure">{correct}</span>
+                    </div>
 
-                <div className="score wrong">
-                    <span className="figure">{wrong}</span>
-                    <span className="title">Wrong</span>
+                    <div className="score wrong">
+                        <span className="figure">{wrong}</span>
+                    </div>
                 </div>
             </div>
         )

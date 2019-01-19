@@ -12,12 +12,11 @@ They are then provided with two other cities and they have to guess which is the
 
 ## Planned Ideas
 
-
 - [ ] Nicer UI
     - [ ] Improve the way CSS is stored - style components?
     - [ ] Ensure it is usable on mobile
 - [ ] Timed game
-    - [ ] Show count down progress
+    - [x] Show count down progress
     - [ ] Let user specify round time
     - [ ] Next question is shown if timer runs out, classes as fail
 - [ ] Score System
