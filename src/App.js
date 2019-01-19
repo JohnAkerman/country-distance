@@ -48,6 +48,19 @@ class App extends Component {
         let locationA = this.getRandomLocation();
         let locationB = this.getRandomLocation();
 
+        // Really don't like how this works but it greatly reduces risk of having two the same
+        while (locationStart === locationA) {
+            locationA = this.getRandomLocation()
+        }
+
+        while (locationA === locationB) {
+            locationB = this.getRandomLocation()
+        }
+
+        while (locationB === locationStart) {
+            locationStart = this.getRandomLocation()
+        }
+
         this.setState({
             start: {
                 location: locationStart,

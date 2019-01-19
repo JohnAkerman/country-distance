@@ -76,7 +76,6 @@ class Location extends Component {
             flagString = `${require('svg-country-flags/svg/' + this.props.location.countryCode.toLowerCase() + '.svg')}`
             return flagString
         } catch(e) {
-            console.log('Using fallback', this.props.location.countryName)
             return flagString = `fallback.svg`
         }
     }
