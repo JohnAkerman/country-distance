@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/country-distance/static/media/kp.770cb198.svg"
   },
   {
-    "revision": "15cc1d2700447ee4d5f1",
-    "url": "/country-distance/static/css/main.2fb819b0.chunk.css"
+    "revision": "b261309ae920fe9d1a80",
+    "url": "/country-distance/static/css/main.e23d7926.chunk.css"
   },
   {
     "revision": "ca867c6f1d3c4e012efe",
@@ -520,8 +520,8 @@ self.__precacheManifest = [
     "url": "/country-distance/static/media/kn.c991c407.svg"
   },
   {
-    "revision": "15cc1d2700447ee4d5f1",
-    "url": "/country-distance/static/js/main.15cc1d27.chunk.js"
+    "revision": "b261309ae920fe9d1a80",
+    "url": "/country-distance/static/js/main.b261309a.chunk.js"
   },
   {
     "revision": "e7ceeb083f6540d5f61fe2dbd2b22d77",
@@ -1040,7 +1040,7 @@ self.__precacheManifest = [
     "url": "/country-distance/static/media/zw.80632a3c.svg"
   },
   {
-    "revision": "884c1ec8db155cc2ae45da75f5ef4d5a",
+    "revision": "1050d85957090c2e67990352080ff8cd",
     "url": "/country-distance/index.html"
   }
 ];

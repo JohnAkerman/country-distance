@@ -1,7 +1,7 @@
 {
-  "main.css": "/country-distance/static/css/main.2fb819b0.chunk.css",
-  "main.js": "/country-distance/static/js/main.15cc1d27.chunk.js",
-  "main.js.map": "/country-distance/static/js/main.15cc1d27.chunk.js.map",
+  "main.css": "/country-distance/static/css/main.e23d7926.chunk.css",
+  "main.js": "/country-distance/static/js/main.b261309a.chunk.js",
+  "main.js.map": "/country-distance/static/js/main.b261309a.chunk.js.map",
   "static/js/1.ca867c6f.chunk.js": "/country-distance/static/js/1.ca867c6f.chunk.js",
   "static/js/1.ca867c6f.chunk.js.map": "/country-distance/static/js/1.ca867c6f.chunk.js.map",
   "runtime~main.js": "/country-distance/static/js/runtime~main.bdbbc1a2.js",
@@ -262,8 +262,8 @@
   "static/media/za.svg": "/country-distance/static/media/za.bb194490.svg",
   "static/media/zm.svg": "/country-distance/static/media/zm.53783063.svg",
   "static/media/zw.svg": "/country-distance/static/media/zw.80632a3c.svg",
-  "static/css/main.2fb819b0.chunk.css.map": "/country-distance/static/css/main.2fb819b0.chunk.css.map",
+  "static/css/main.e23d7926.chunk.css.map": "/country-distance/static/css/main.e23d7926.chunk.css.map",
   "index.html": "/country-distance/index.html",
-  "precache-manifest.79d7d5b6bf67e32d6bd14f88f988cd34.js": "/country-distance/precache-manifest.79d7d5b6bf67e32d6bd14f88f988cd34.js",
+  "precache-manifest.76a2ca9b2a0a8c6c9dbaa6aa9daf7ebb.js": "/country-distance/precache-manifest.76a2ca9b2a0a8c6c9dbaa6aa9daf7ebb.js",
   "service-worker.js": "/country-distance/service-worker.js"
 }
