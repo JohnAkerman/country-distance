@@ -5,7 +5,6 @@ class Dropdown extends Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
         this.state = {
             selected: this.props.initial || this.props.opts[0]
         }
@@ -23,7 +22,7 @@ class Dropdown extends Component {
         return (
             <React.Fragment>
                 {this.props.heading && <h2>{this.props.heading}</h2>}
-                <select onChange={this.handleChange}>
+                <select onChange={this.handleChange} defaultValue={this.props.initial}>
                     {this.props.opts.map( (item) =>
                         <option key={item} value={item}>{item}</option>
                     )}

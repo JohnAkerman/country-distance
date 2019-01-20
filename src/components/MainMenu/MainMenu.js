@@ -16,7 +16,7 @@ class MainMenu extends Component {
             currentMenu: this.props.menu,
             distanceDisplayType: this.props.distanceDisplayType,
             showFlags: this.props.showFlags,
-            activeRegion: this.props.regions[0] || 0
+            activeRegion: this.props.activeRegion || this.props.regions[0] || 0
         }
     }
 
