@@ -97,12 +97,16 @@ class App extends Component {
 
             // Check to see if we have already filtered regions previously.
             if (typeof this.regionCache[this.state.activeRegion] !== 'undefined' && this.regionCache[this.state.activeRegion].length > 0) {
-                console.log('Pulled from cache')
-                return this.regionCache[this.state.activeRegion][randomBetween(0, this.regionCache[this.state.activeRegion].length)] // Jeez
+                const index = randomBetween(0, this.regionCache[this.state.activeRegion].length)
+                return this.regionCache[this.state.activeRegion][index]
             } else {
-                console.log('Creating cache')
+                // Loop through the regions and return those that are relevant to the active region
                 const filteredLocations = locationData.filter(item => item.continent === this.state.activeRegion)
+                
+                // Store the newly filtered regions in the cache
                 this.regionCache[this.state.activeRegion] = filteredLocations
+
+                // Return a random item
                 return filteredLocations[randomBetween(0, filteredLocations.length)];
             }
         }
