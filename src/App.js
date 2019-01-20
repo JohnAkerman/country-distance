@@ -20,7 +20,8 @@ class App extends Component {
             menu: 'splash',
             distanceDisplayType: 'miles',
             showFlags: true,
-            activeRegion: regions[0]
+            activeRegion: regions[0],
+            answerHasBeenSelected: false
         }
 
         this.regionCache = []
@@ -85,7 +86,7 @@ class App extends Component {
                 distance: distanceBetween(locationStart, locationB),
                 showDistance: false,
             },
-            providedAnswer: false,
+            answerHasBeenSelected: false,
             timeUp: false,
         })
     }
@@ -102,7 +103,7 @@ class App extends Component {
             } else {
                 // Loop through the regions and return those that are relevant to the active region
                 const filteredLocations = locationData.filter(item => item.continent === this.state.activeRegion)
-                
+
                 // Store the newly filtered regions in the cache
                 this.regionCache[this.state.activeRegion] = filteredLocations
 
@@ -117,8 +118,8 @@ class App extends Component {
     }
 
     updateAppState = guess => {
-        if (!this.state.providedAnswer && !this.state.timeUp) {
-            this.setState({providedAnswer: true})
+        if (!this.state.answerHasBeenSelected && !this.state.timeUp) {
+            this.setState({answerHasBeenSelected: true})
             this.checkAnswer(guess)
         }
     }
@@ -205,10 +206,12 @@ class App extends Component {
                         <h2 className="question__heading">Which is closer?</h2>
                         <Location location={answerA.location} showFlags={showFlags} showDistance={answerA.showDistance} distanceDisplayType={distanceDisplayType} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                         <Location location={answerB.location} showFlags={showFlags} showDistance={answerB.showDistance} distanceDisplayType={distanceDisplayType} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
-                        <button type="button" className="mb-3" onClick={() => { setTimeout(() => {
+                        {(this.state.answerHasBeenSelected || this.state.timeUp) &&
+                            <button type="button" className="mb-3" onClick={() => { setTimeout(() => {
                             this._childTimer.resetTimer()
                             this._childTimer.startTimer()
                         }, 10); this.nextGame() }}>Next Round</button>
+                    }
                     </div>
                 </React.Fragment>
             )
