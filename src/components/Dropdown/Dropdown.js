@@ -21,12 +21,14 @@ class Dropdown extends Component {
     render() {
         return (
             <React.Fragment>
-                {this.props.heading && <h2>{this.props.heading}</h2>}
-                <select onChange={this.handleChange} defaultValue={this.props.initial}>
-                    {this.props.opts.map( (item) =>
-                        <option key={item} value={item}>{item}</option>
-                    )}
-                </select>
+                {this.props.label && <label className="form-item__label">{this.props.label}</label>}
+                <div className="form-item__control dropdown">
+                    <select onChange={this.handleChange} defaultValue={this.props.initial}>
+                        {this.props.opts.map( (item) =>
+                            <option key={item} value={item}>{item}</option>
+                        )}
+                    </select>
+                </div>
             </React.Fragment>
         )
     }

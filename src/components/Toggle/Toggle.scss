@@ -1,17 +1,27 @@
 .toggle {
-    &__wrapper {
+    &-wrapper {
         position: relative;
         cursor: pointer;
         margin-bottom: 15px;
+        display: flex;
+        align-items: center;
     }
 
-    &__pill {
+    &-label {
+        color: white;
+        text-shadow: 0 1px 1px #23494e;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+
+    &-pill {
         display: inline-block;
         position: relative;
-        background-color: red;
+        background-color: #23494e;
         width: 75px;
         height: 30px;
         border-radius: 50px;
+        margin: 0 12px;
 
         &__inner {
             width: 25px;
@@ -19,22 +29,18 @@
             position: absolute;
             top: 10%;
             border-radius: 50%;
-            background-color: green;
+            background-color: white;
             transition: right 0.2s, backgroundColor 0.2s;
-            right: 5%;
+            right: 60%;
         }
 
-        &.inactive {
-            .toggle__pill__inner {
-                right: 60%;
-                background-color: grey;
+        &.active {
+            background-color: white;
 
+            .toggle-pill__inner {
+                background-color: #376d75;
+                right: 5%;
             }
         }
-    }
-
-
-    &__label {
-        display: inline-block;
     }
 }

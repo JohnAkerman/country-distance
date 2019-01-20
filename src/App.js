@@ -207,7 +207,7 @@ class App extends Component {
                         <Location location={answerA.location} showFlags={showFlags} showDistance={answerA.showDistance} distanceDisplayType={distanceDisplayType} distance={answerA.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                         <Location location={answerB.location} showFlags={showFlags} showDistance={answerB.showDistance} distanceDisplayType={distanceDisplayType} distance={answerB.distance} returnGuessToApp={value => this.updateAppState(value) } type="answer" />
                         {(this.state.answerHasBeenSelected || this.state.timeUp) &&
-                            <button type="button" className="mb-3" onClick={() => { setTimeout(() => {
+                            <button type="button" className="btn float-right mb-3" onClick={() => { setTimeout(() => {
                             this._childTimer.resetTimer()
                             this._childTimer.startTimer()
                         }, 10); this.nextGame() }}>Next Round</button>

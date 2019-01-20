@@ -24,13 +24,16 @@ class Toggle extends Component {
 
     render() {
         return (
-            <div className="toggle__wrapper" onClick={this.toggle}>
-                <div className="toggle__label">{this.props.inactiveLabel || ''}</div>
-                <div className={classNames("toggle__pill", {active: this.state.toggle}, {inactive: !this.state.toggle})}>
-                    <div className="toggle__pill__inner"></div>
+            <React.Fragment>
+                {this.props.label && <label className="form-item__label">{this.props.label}</label>}
+                <div className="form-item__control toggle-wrapper" onClick={this.toggle}>
+                    {this.props.inactiveLabel && <label className="toggle-label">{this.props.inactiveLabel}</label>}
+                    <div className={classNames("toggle-pill", {active: this.state.toggle}, {inactive: !this.state.toggle})}>
+                        <div className="toggle-pill__inner"></div>
+                    </div>
+                    {this.props.activeLabel && <label className="toggle-label">{this.props.activeLabel}</label>}
                 </div>
-                <div className="toggle__label">{this.props.activeLabel || ''}</div>
-            </div>
+            </React.Fragment>
         )
     }
 }

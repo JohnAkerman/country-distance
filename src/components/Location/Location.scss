@@ -28,6 +28,8 @@
         font-size: 26px;
         font-weight: 100;
         line-height: 1.1;
+        display: flex;
+        align-items: center;
     }
 
     &__country {
@@ -35,6 +37,14 @@
         font-size: 19px;
         font-weight: 600;
         line-height: 1.1;
+    }
+
+    &__dist {
+        font-size: 17px;
+        font-weight: 600;
+        margin-left: 8px;
+        top: 2px;
+        position: relative;
     }
 
     &__flag {

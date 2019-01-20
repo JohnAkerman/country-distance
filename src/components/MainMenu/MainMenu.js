@@ -48,19 +48,27 @@ class MainMenu extends Component {
             return (
                 <div className="menu menu--splash">
                     <h1>Country Distance</h1>
-                    <button className="btn" onClick={() => this.changeMenu('game')}>Play Game</button><br />
+                    <button className="btn" onClick={() => this.changeMenu('game')}>Play Game</button>
                     <button className="btn" onClick={() => this.changeMenu('settings')}>Settings</button>
                 </div>
             )
         } else if (this.state.currentMenu === 'settings') {
             return (
                 <div className="menu menu--settings">
-                    <h1>Settings</h1>
-                    <Toggle initial={(this.props.distanceDisplayType === 'km' ? true : false )} onToggle={(val) => { this.handleDistanceType(val) }} activeLabel='Kilometers' inactiveLabel='Miles' />
-                    <Toggle initial={this.props.showFlags} onToggle={(val) => { this.handleFlagToggle(val) }} heading='Show Flags' activeLabel='Yes' inactiveLabel='No' />
+                    <div className="container">
+                        <h1>Settings</h1>
 
-                    <Dropdown heading="Regions" onChange={(val) => { this.handleRegionChange(val) }} initial={this.state.activeRegion}  opts={this.props.regions} />
-                    <button className="btn" onClick={() => { this.saveSettings(); this.changeMenu('splash')} }>Save Settings</button>
+                        <div className="form-item">
+                            <Toggle label="Distance type" initial={(this.props.distanceDisplayType === 'km' ? true : false )} onToggle={(val) => { this.handleDistanceType(val) }} activeLabel='Kilometers' inactiveLabel='Miles' />
+                        </div>
+                        <div className="form-item">
+                            <Toggle label="Show Flags" initial={this.props.showFlags} onToggle={(val) => { this.handleFlagToggle(val) }}/>
+                        </div>
+                        <div className="form-item">
+                            <Dropdown label="Regions" onChange={(val) => { this.handleRegionChange(val) }} initial={this.state.activeRegion}  opts={this.props.regions} />
+                        </div>
+                        <button className="btn float-right" onClick={() => { this.saveSettings(); this.changeMenu('splash')} }>Save Settings</button>
+                    </div>
                 </div>
             )
         }
