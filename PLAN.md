@@ -18,7 +18,6 @@ They are then provided with two other cities and they have to guess which is the
 - [ ] Timed game
     - [x] Show count down progress
     - [ ] Let user specify round time
-    - [ ] Next question is shown if timer runs out, classes as fail
 - [ ] Score System
     - [ ] Award points for harder locations
     - [ ] Award more points for speed
@@ -27,13 +26,13 @@ They are then provided with two other cities and they have to guess which is the
     - [ ] Leaderboard of previous games?
     - [ ] Allow users to store name on scores
 - [ ] Menus
-    - [ ] Splash screen
-    - [ ] Game screen
-    - [ ] Settings
+    - [x] Splash screen
+    - [x] Game screen
+    - [x] Settings
         - [x] Ability to swap between km/miles
         - [x] Toggle flags to make it easier - using ISO flags
         - [ ] Ability to hide country names (Improve score greatly)
-        - [ ] Continent filtering, so only countries in Asia
+        - [x] Continent filtering, so only countries in Asia
         - [ ] Dark mode
 - [ ] Allow ability to make it harder by showing more locations
     - [ ] Allow for 50/50 (reduced points)
@@ -42,18 +41,3 @@ They are then provided with two other cities and they have to guess which is the
 - [ ] Set certain locations 'easy' such as London, others are hard such as Gaborone, Botswanan
 - [ ] Ability to show city on a map after question is answered, useful for very tough questions
 - [ ] Points system = time used * difficulty of question?
-
-
-
-## Components
-
-### Location
-Renamed from Location, it is used to represent a location within the world, generally a Location city
-
-### MainMenu
-
-
-## Scoreboard
-
-
-## Timer
